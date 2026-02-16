@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* Inventa Custom Color Palette - #86862d Theme matching LiquidChrome */
+:root {
+  --inventa-primary: #86862d;
+  --inventa-secondary: #a8a835;
+  --inventa-dark: #4D4D1A;
+  --inventa-darker: #333310;
+  --inventa-light: #d4d48a;
+  --inventa-gray: #b3b3b3;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #86862d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a835;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #86862d;
+  outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Remove ALL underlines from links and buttons globally */
+a,
+a:hover,
+a:focus,
+a:active,
+a:visited,
+button,
+.no-underline {
+  text-decoration: none !important;
+}
+
+/* Link reset */
+a {
+  color: inherit;
+}
+
+/* Code font */
+code {
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Glowing border effect */
+.glow-border {
+  position: relative;
+  border: 1px solid transparent;
+  background: linear-gradient(#171717, #171717) padding-box,
+              linear-gradient(135deg, transparent, #86862d, transparent) border-box;
+  transition: all 0.3s ease;
+}
+
+.glow-border:hover {
+  border: 1px solid transparent;
+  background: linear-gradient(#171717, #171717) padding-box,
+              linear-gradient(135deg, #86862d, #a8a835, #86862d) border-box;
+  box-shadow: 0 0 20px rgba(134, 134, 45, 0.3);
+}
+
+/* Custom container max-width */
+.container {
+  max-width: 1280px;
+}
+
+/* Inventa gradient utilities - #86862d Theme */
+.inventa-gradient {
+  background: linear-gradient(135deg, #86862d 0%, #a8a835 100%);
+}
+
+.inventa-gradient-dark {
+  background: linear-gradient(135deg, #4D4D1A 0%, #86862d 100%);
+}
+
+.inventa-gradient-light {
+  background: linear-gradient(135deg, #a8a835 0%, #d4d48a 100%);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(23, 23, 23, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(134, 134, 45, 0.2);
+}
+
+.glass:hover {
+  border-color: rgba(134, 134, 45, 0.5);
+  box-shadow: 0 0 25px rgba(134, 134, 45, 0.2);
+}
