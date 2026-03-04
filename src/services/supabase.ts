@@ -5,9 +5,16 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-// Supabase Configuration
-const SUPABASE_URL = 'https://godeykiqbtfzymjijyhf.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdvZGV5a2lxYnRmenltamlqeWhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzExMDQ3MjYsImV4cCI6MjA4NjY4MDcyNn0.0VWGOenzvMzaBRc_Yckj9E3ale8IFOLsYfHXZ9aO67U';
+// Load from .env (Vite)
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+// Safety check (helps during development)
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  throw new Error(
+    'Supabase environment variables are missing. Check your .env file.'
+  );
+}
 
 // Create Supabase client
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -20,19 +27,24 @@ export const TABLES = {
 } as const;
 
 // Check if Supabase is configured
-export const isSupabaseConfigured = () => {
-  return SUPABASE_URL && SUPABASE_ANON_KEY;
+export const isSupabaseConfigured = (): boolean => {
+  return !!SUPABASE_URL && !!SUPABASE_ANON_KEY;
 };
 
 // Test connection
 export const testConnection = async (): Promise<boolean> => {
   try {
-    const { error } = await supabase.from(TABLES.USERS).select('id').limit(1);
+    const { error } = await supabase
+      .from(TABLES.USERS)
+      .select('id')
+      .limit(1);
+
     if (error) {
       console.error('Supabase connection error:', error.message);
       return false;
     }
-    console.log('✅ Supabase connected successfully!');
+
+    console.log('Supabase connected successfully');
     return true;
   } catch (err) {
     console.error('Supabase connection failed:', err);
