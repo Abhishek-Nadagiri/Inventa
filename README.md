@@ -1,6 +1,6 @@
 # 🔍🛡️ Inventa - Intellectual Property Protection System
 
-**Where Ownership Begins**
+**Ownership Begins Here**
 
 A secure intellectual property document protection and ownership verification system that allows users to register, upload, and cryptographically prove ownership of their documents.
 
